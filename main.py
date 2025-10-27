@@ -14,6 +14,10 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f"✅ Logged in as {bot.user}")
+    # 👇 Set custom activity / status
+    activity = discord.Game("CRIPSNBLOOD ON TOP 🔥")
+    await bot.change_presence(status=discord.Status.online, activity=activity)
+
     try:
         synced = await bot.tree.sync()
         print(f"🔁 Synced {len(synced)} slash commands.")
@@ -43,7 +47,7 @@ async def dm(interaction: discord.Interaction, role: discord.Role, message: str)
         except:
             failed += 1
 
-    # 👇 Custom thank-you message added here
+    # 👇 Custom thank-you message
     await interaction.followup.send(
         f"✅ DMs sent to {sent} members, failed for {failed}.\n\n"
         f"**THANKS FOR USING CNB OFFICIAL BOT. Made by psychopathmc 🔥**"
