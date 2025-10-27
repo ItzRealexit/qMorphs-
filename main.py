@@ -43,7 +43,11 @@ async def dm(interaction: discord.Interaction, role: discord.Role, message: str)
         except:
             failed += 1
 
-    await interaction.followup.send(f"✅ Done! Sent to {sent} members, failed for {failed}.")
+    # 👇 Custom thank-you message added here
+    await interaction.followup.send(
+        f"✅ DMs sent to {sent} members, failed for {failed}.\n\n"
+        f"**THANKS FOR USING CNB OFFICIAL BOT. Made by psychopathmc 🔥**"
+    )
 
 # ---- Run bot ----
 bot.run(os.getenv("TOKEN"))
